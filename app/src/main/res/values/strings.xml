@@ -1,0 +1,93 @@
+<resources>
+
+    <string-array name="TypePets">
+        <item>Selecione um tipo de pets</item>
+        <item>Cachorro</item>
+        <item>Gato</item>
+        <item>Peixe</item>
+        <item>Passarinho</item>
+    </string-array>
+
+    <string-array name="RacasCachorro">
+        <item>Selecione uma raca de cachorro</item>
+        <item>Shih Tzu</item>
+        <item>Pastor Alemão</item>
+        <item>Poodle</item>
+        <item>labrador</item>
+        <item>Buldogue</item>
+        <item>Pinscher</item>
+        <item>Sem raça definida</item>
+        <item>Outro</item>
+    </string-array>
+
+    <string-array name="RacasGato">
+        <item>Selecione uma raca de gato</item>
+        <item>Persa</item>
+        <item>Siamês</item>
+        <item>Maine Coon</item>
+        <item>Angorá</item>
+        <item>Sphynx</item>
+        <item>Ragdoll</item>
+        <item>Sem raça definida</item>
+        <item>Outro</item>
+    </string-array>
+
+    <string-array name="EspeciePeixe">
+        <item>Selecione uma espécie de peixe</item>
+        <item>Betta</item>
+        <item>Peixe Colisa</item>
+        <item>Maine Coon</item>
+        <item>Angorá</item>
+        <item>Sphynx</item>
+        <item>Ragdoll</item>
+        <item>Sem raça definida</item>
+        <item>Outro</item>
+    </string-array>
+
+
+    ---------------Login-----------------
+    <string name="app_name">PetCenterTwo</string>
+    <string name="login_nome">Nome:</string>
+    <string name="login_password">Senha:</string>
+    <string name="login_register"><u>Cadastrar</u></string>
+    <string name="login_btn_entrar">Entrar</string>
+    <string name="login_btn_forgot_password">Esqueci minha senha</string>
+
+
+    <string name="login_informativo"><font color="#FFFFFFFF">Se você ainda não tem uma conta,</font> <font color="#FF9743"><u>registre-se</u></font><font color="#FFFFFFFF"> ou</font></string>
+
+    <string name="notification">Notificações</string>
+    <string name="compras">Compras</string>
+    <string name="title_activity_main">MainActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="history_title">Olá, %1$s!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    ---------------Register-----------------
+
+    <string name="register_pet">Cadastrar Pet</string>
+    <string name="register_nome">Nome</string>
+    <string name="register_tip">Tipo</string>
+    <string name="register_breed">Raça</string>
+    <string name="register_birth_date">Data de Nascimento</string>
+
+    ---------------Register-----------------
+
+
+    <string name="user_register_nome">Nome:</string>
+    <string name="user_register_password">Senha:</string>
+    <string name="user_register_confirm">Confirme a senha:</string>
+    <string name="user_register_btn_register">Cadastrar</string>
+
+
+</resources>

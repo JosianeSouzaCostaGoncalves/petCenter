@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".presenter.fragment.RegisterFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/dark_purple">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTitleRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:gravity="center"
+                android:text="@string/register_pet"
+                android:textSize="24dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clbodyRegister"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_register_nome"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/clbodyRegister">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_register_nome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nome"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/linearLayoutCompat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_border_shape_strong"
+                android:orientation="vertical"
+                android:padding="4dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/il_register_nome">
+
+                <Spinner
+                    android:id="@+id/spnRegister"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:minHeight="48dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/il_register_nome" />
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_register_breed"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearLayoutCompat">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_register_breed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Raça"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/il_register_date"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_register_breed">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_register_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusable="false"
+                    android:hint="Data de Nascimento"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_register_image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="16dp"
+                android:background="@drawable/gradient_list"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="@+id/btn_register_salvar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/il_register_date">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="26dp"
+                    android:backgroundTint="#FFFFFF"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:tint="#FFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:rippleColor="#FFFFFF"
+                    app:srcCompat="@android:drawable/stat_notify_sync" />
+
+                <com.bhargavms.dotloader.DotLoader
+                    android:id="@+id/dots_loading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:color_array="@array/dot_colors"
+                    app:dot_radius="8dp"
+                    app:number_of_dots="3"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"/>
+
+                <ImageView
+                    android:id="@+id/iv_random"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="0dp"
+                    android:scaleType="fitCenter"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="0dp" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_register_salvar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/bg_border_btn"
+                android:text="Cadastrar"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/nav_lupa"
+        android:title="Pesquisa"
+        android:icon="@drawable/ic_lupa"/>
+
+    <item android:id="@+id/nav_car_compra"
+        android:title="Compra"
+        android:icon="@drawable/ic_car_compra"/>
+
+    <item android:id="@+id/nav_notifications"
+        android:title="Notificações"
+        android:icon="@drawable/ic_notifications"/>
+
+</menu>

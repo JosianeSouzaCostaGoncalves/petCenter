@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".presenter.fragment.LoginFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLogin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/dark_purple"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgLogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ilHomeNome"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/imgLogo">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLoginNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/login_nome"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ilLoginPassoword"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ilHomeNome">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLoginPassoword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/login_password"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEntrar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_border_btn"
+                android:text="@string/login_btn_entrar"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ilLoginPassoword"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvInfomationRegister"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/login_informativo"
+                android:textColor="@color/white"
+                android:textAlignment="center"
+              android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/ilLoginPassoword"
+                app:layout_constraintStart_toStartOf="@+id/ilLoginPassoword"
+                app:layout_constraintTop_toBottomOf="@id/btnEntrar" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnShop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:text="@string/login_btn_forgot_password"
+                android:textStyle="bold"
+                android:background="@drawable/bg_border_btn_forgot_password"
+                android:padding="8dp"
+                android:textColor="@color/orange"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvInfomationRegister"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
