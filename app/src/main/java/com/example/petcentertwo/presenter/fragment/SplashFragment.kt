@@ -20,12 +20,11 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
         }, 3000)
-        val view = inflater.inflate(R.layout.fragment_splash, container, false)
-        return view
+        return inflater.inflate(R.layout.fragment_splash, container, false)
     }
 
 

@@ -18,10 +18,9 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        val view = binding.root
-        return view
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,6 +29,7 @@ class LoginFragment : Fragment() {
         binding.btnEntrar.setOnClickListener {
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_loginFragment_to_homeFragment)
+
         }
 
     }

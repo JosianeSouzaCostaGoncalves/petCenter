@@ -1,7 +1,6 @@
 package com.example.petcentertwo.presenter.fragment
 
 import android.app.DatePickerDialog
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,12 +9,18 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.DatePicker
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
 import com.example.petcentertwo.R
 import com.example.petcentertwo.databinding.FragmentRegisterBinding
+import com.example.petcentertwo.presenter.data.db.AppDatabase
+import com.example.petcentertwo.presenter.data.db.dao.RegisterPetDao
+import com.example.petcentertwo.presenter.data.db.entity.RegisterPetEntity
+import com.example.petcentertwo.presenter.data.db.repository.RepositoryDb
 import com.example.petcentertwo.presenter.repository.Repository
 import com.example.petcentertwo.presenter.utils.PetFragmentViewModel
 import com.example.petcentertwo.presenter.utils.PetViewModelFactory
@@ -27,11 +32,15 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
+    private val database: AppDatabase by lazy {
+        AppDatabase.getDatabase(requireContext())
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val repository = Repository()
-        val viewModelFactory = PetViewModelFactory(repository)
+        val repositoryDb = RepositoryDb(database.registerPetDao())
+        val viewModelFactory = PetViewModelFactory(repository, repositoryDb)
         viewModel = ViewModelProvider(this, viewModelFactory)[PetFragmentViewModel::class.java]
     }
 
@@ -68,11 +77,28 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                     position: Int,
                     id: Long
                 ) {
-                checkIsCatOrDog()
+                    checkIsCatOrDog()
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                }
             }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
+        binding.btnRegisterSalvar.setOnClickListener {
+            viewModel.insert(
+                RegisterPetEntity(
+                    name = binding.etRegisterNome.text.toString(),
+                    type = binding.spnRegister.selectedItem.toString(),
+                    breed = binding.etRegisterBreed.text.toString(),
+                    dateOfBrith = binding.etRegisterDate.text.toString(),
+                    )
+            )
+            Toast.makeText(
+                requireContext(),
+                getString(R.string.cadastro),
+                Toast.LENGTH_LONG
+            ).show()
+            requireView().findNavController().navigateUp()
         }
     }
 
@@ -112,7 +138,7 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
         })
     }
 
-    private fun spinner(){
+    private fun spinner() {
 
         val typePets = resources.getStringArray(
             R.array.TypePets
@@ -125,14 +151,14 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
 
     }
 
-    private fun checkIsCatOrDog(){
-        if(binding.spnRegister.selectedItem.toString() == "Cachorro"){
+    private fun checkIsCatOrDog() {
+        if (binding.spnRegister.selectedItem.toString() == "Cachorro") {
             binding.clRegisterImage.visibility = View.VISIBLE
             setDogImage()
-        }else if(binding.spnRegister.selectedItem.toString()  == "Gato"){
+        } else if (binding.spnRegister.selectedItem.toString() == "Gato") {
             binding.clRegisterImage.visibility = View.VISIBLE
             setCatImage()
-        }else{
+        } else {
             binding.clRegisterImage.visibility = View.GONE
         }
     }
