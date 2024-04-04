@@ -3,8 +3,7 @@ package com.example.petcentertwo.presenter.data.db.entity
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "register_pet")
-
+@Entity
 data class RegisterPetEntity(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,

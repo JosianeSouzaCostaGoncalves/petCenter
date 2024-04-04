@@ -1,5 +1,6 @@
 package com.example.petcentertwo.presenter.utils
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,8 +9,6 @@ import com.example.petcentertwo.presenter.data.db.repository.RepositoryDb
 import com.example.petcentertwo.presenter.model.CatApiModel
 import com.example.petcentertwo.presenter.model.DogApiModel
 import com.example.petcentertwo.presenter.repository.Repository
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
@@ -22,12 +21,6 @@ class PetFragmentViewModel (
     val myCatResponse: MutableLiveData<Response<List<CatApiModel>>> = MutableLiveData()
 
     val  itemEntitiesLiveData = MutableLiveData<List<RegisterPetEntity>>()
-
-    private val _PetsList = MutableLiveData<List<RegisterPetEntity>>()
-    val PetsList: MutableLiveData<List<RegisterPetEntity>>
-        get() = _PetsList
-
-
     fun getItems() {
         viewModelScope.launch {
             repositoryDb.getAllRegisterPet().collect{ items ->
@@ -35,21 +28,16 @@ class PetFragmentViewModel (
             }
         }
     }
-
     fun insert(registerPetEntity: RegisterPetEntity) {
         viewModelScope.launch {
             repositoryDb.insert(registerPetEntity)
         }
     }
-
-    fun delete(registerPetEntity: RegisterPetEntity) {
+    fun delete(position: Int) {
         viewModelScope.launch {
-            repositoryDb.delete(registerPetEntity.id)
+            repositoryDb.delete(itemEntitiesLiveData.value!![position].id)
         }
     }
-
-
-
     fun getDogImage() {
         viewModelScope.launch {
             val response: Response<DogApiModel> = repository.getRandomDogImage()
@@ -58,7 +46,6 @@ class PetFragmentViewModel (
             }
         }
     }
-
     fun getCatImage() {
         viewModelScope.launch {
             val response: Response<List<CatApiModel>> = repository.getRandomCatImage()
@@ -67,7 +54,4 @@ class PetFragmentViewModel (
             }
         }
     }
-
-
-
 }

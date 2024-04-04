@@ -3,9 +3,7 @@ package com.example.petcentertwo.presenter.fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import android.widget.TextView
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.petcentertwo.R
 import com.example.petcentertwo.presenter.data.db.entity.RegisterPetEntity
@@ -47,18 +45,16 @@ class AdapterClass(
             rvDateOfBrith.text = currentItem.dateOfBrith
 
             tvRemove.setOnClickListener {
-
-
+                listener.onItemClick(position, true)
             }
         }
-
     }
     override fun getItemCount(): Int {
       return dataList.size
     }
 
     interface RecyclerViewEvent{
-        fun onItemClick(position: Int)
+        fun onItemClick(position: Int, isDelete: Boolean = false)
     }
 
 }

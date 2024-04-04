@@ -4,15 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.petcentertwo.R
 import com.example.petcentertwo.databinding.FragmentHomeBinding
 import com.example.petcentertwo.presenter.data.db.AppDatabase
-import com.example.petcentertwo.presenter.data.db.dao.RegisterPetDao
-import com.example.petcentertwo.presenter.data.db.entity.RegisterPetEntity
 import com.example.petcentertwo.presenter.data.db.repository.RepositoryDb
 import com.example.petcentertwo.presenter.repository.Repository
 import com.example.petcentertwo.presenter.utils.PetFragmentViewModel
@@ -26,12 +23,11 @@ class HomeFragment : Fragment(), AdapterClass.RecyclerViewEvent {
     private val database: AppDatabase by lazy {
         AppDatabase.getDatabase(requireContext())
     }
-
-    val item: List<RegisterPetEntity> = listOf()
-    override fun onItemClick(position: Int) {
-        viewModel.delete(item[position])
+    override fun onItemClick(position: Int, isDelete: Boolean) {
+        if (isDelete) {
+            viewModel.delete(position)
+        }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -50,11 +46,9 @@ class HomeFragment : Fragment(), AdapterClass.RecyclerViewEvent {
         viewModel = ViewModelProvider(this, viewModelFactory)[PetFragmentViewModel::class.java]
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupPetList()
-
 
         binding.btnFab.setOnClickListener {
             Navigation.findNavController(requireView())
@@ -63,14 +57,11 @@ class HomeFragment : Fragment(), AdapterClass.RecyclerViewEvent {
 //        binding.tvWelcomeText.apply {
 //            text = resources.getString(R.string.history_title, arguments?.getString("userName"))
 //        }
-
     }
-
     private fun setupPetList() {
         viewModel.getItems()
         viewModel.itemEntitiesLiveData.observe(viewLifecycleOwner) {
             binding.rvMyPets.adapter = AdapterClass(dataList = it, listener = this)
         }
     }
-
 }
