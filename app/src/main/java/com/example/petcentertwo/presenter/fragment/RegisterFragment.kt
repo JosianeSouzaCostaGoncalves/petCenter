@@ -35,6 +35,7 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     private val database: AppDatabase by lazy {
         AppDatabase.getDatabase(requireContext())
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -91,7 +92,7 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
                     type = binding.spnRegister.selectedItem.toString(),
                     breed = binding.etRegisterBreed.text.toString(),
                     dateOfBrith = binding.etRegisterDate.text.toString(),
-                    )
+                )
             )
             Toast.makeText(
                 requireContext(),
@@ -109,7 +110,12 @@ class RegisterFragment : Fragment(), DatePickerDialog.OnDateSetListener {
     }
 
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, day: Int) {
-        binding.etRegisterDate.setText("" + day + "/" + month + "/" + year)
+        if (month < 10) {
+            binding.etRegisterDate.setText("" + day + "/0" + month + "/" + year)
+        }
+        else {
+            binding.etRegisterDate.setText("" + day + "/" + month + "/" + year)
+        }
     }
 
     private fun setDogImage() {

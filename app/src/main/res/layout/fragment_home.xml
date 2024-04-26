@@ -52,11 +52,11 @@
         android:id="@+id/containerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/dark_purple"
         app:layout_constraintBottom_toTopOf="@+id/btnNavigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        android:background="@color/dark_purple"/>
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btnFab"
@@ -70,6 +70,18 @@
         app:layout_constraintBottom_toBottomOf="@+id/containerView"
         app:layout_constraintEnd_toEndOf="parent" />
 
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_border_btn"
+        android:text="Enviar notificacao"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/containerView"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btnNavigationView"
