@@ -70,19 +70,6 @@
         app:layout_constraintBottom_toBottomOf="@+id/containerView"
         app:layout_constraintEnd_toEndOf="parent" />
 
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnNotification"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:background="@drawable/bg_border_btn"
-        android:text="Enviar notificacao"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/containerView"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btnNavigationView"
         android:layout_width="0dp"

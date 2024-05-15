@@ -26,7 +26,7 @@ class HomeFragment : Fragment(), AdapterClass.RecyclerViewEvent {
     private val binding get() = _binding!!
     private lateinit var viewModel: PetFragmentViewModel
     private var itemsListBirthday: List<RegisterPetEntity> = emptyList()
-    private val args by navArgs<HomeFragmentArgs>()
+
 
     private val database: AppDatabase by lazy {
         AppDatabase.getDatabase(requireContext())
@@ -49,7 +49,8 @@ class HomeFragment : Fragment(), AdapterClass.RecyclerViewEvent {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val service = CounterNotificationService(requireContext())
+        birthdayNotification(service)
         val repository = Repository()
         val repositoryDb = RepositoryDb(database.registerPetDao())
         val viewModelFactory = PetViewModelFactory(repository, repositoryDb)
@@ -60,15 +61,11 @@ class HomeFragment : Fragment(), AdapterClass.RecyclerViewEvent {
         super.onViewCreated(view, savedInstanceState)
         val service = CounterNotificationService(requireContext())
         setupPetList()
+        birthdayNotification(service)
 
         binding.btnFab.setOnClickListener {
             Navigation.findNavController(requireView())
                 .navigate(R.id.action_homeFragment_to_registerFragment)
-        }
-
-        binding.btnNotification.setOnClickListener {
-
-            birthdayNotification(service)
         }
 
         binding.tvWelcomeText.apply {
