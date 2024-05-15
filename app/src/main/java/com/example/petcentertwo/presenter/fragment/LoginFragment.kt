@@ -5,7 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
 import com.example.petcentertwo.R
 import com.example.petcentertwo.databinding.FragmentLoginBinding
 
@@ -27,10 +30,8 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnEntrar.setOnClickListener {
-            Navigation.findNavController(requireView())
-                .navigate(R.id.action_loginFragment_to_homeFragment)
-
+           findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeFragment(userName = binding.etLoginNome.text.toString()))
         }
-
     }
+
 }

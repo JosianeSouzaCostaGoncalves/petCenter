@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.navArgs
 import com.example.petcentertwo.R
 import com.example.petcentertwo.databinding.FragmentHomeBinding
 import com.example.petcentertwo.presenter.CounterNotificationService
@@ -25,6 +26,7 @@ class HomeFragment : Fragment(), AdapterClass.RecyclerViewEvent {
     private val binding get() = _binding!!
     private lateinit var viewModel: PetFragmentViewModel
     private var itemsListBirthday: List<RegisterPetEntity> = emptyList()
+    private val args by navArgs<HomeFragmentArgs>()
 
     private val database: AppDatabase by lazy {
         AppDatabase.getDatabase(requireContext())
@@ -69,9 +71,9 @@ class HomeFragment : Fragment(), AdapterClass.RecyclerViewEvent {
             birthdayNotification(service)
         }
 
-//        binding.tvWelcomeText.apply {
-//            text = resources.getString(R.string.history_title, arguments?.getString("userName"))
-//        }
+        binding.tvWelcomeText.apply {
+            text = resources.getString(R.string.history_title, arguments?.getString("userName"))
+        }
     }
 
     private fun setupPetList() {
